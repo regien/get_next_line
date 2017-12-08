@@ -6,7 +6,7 @@
 /*   By: gmalpart <gmalpart@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 00:48:17 by gmalpart          #+#    #+#             */
-/*   Updated: 2017/12/06 19:15:05 by gmalpart         ###   ########.fr       */
+/*   Updated: 2017/12/08 01:53:59 by gmalpart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define GET_NEXT_LINE_F
 # define BUFF_SIZE 32
 # include "libft/libft.h"
+# include <fcntl.h>
 
 // x initial position
 // if not -> 0 -- mostly in buf reset

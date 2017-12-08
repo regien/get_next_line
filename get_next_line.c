@@ -6,7 +6,7 @@
 /*   By: gmalpart <gmalpart@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 00:51:55 by gmalpart          #+#    #+#             */
-/*   Updated: 2017/12/06 18:40:56 by gmalpart         ###   ########.fr       */
+/*   Updated: 2017/12/07 22:44:02 by gmalpart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ int		ft_strchr(const char *s, int c)
 	return (i);
 }
 
+// ^ funcion addition
+
+
+// maybe i'll have to change it 
 int				get_buffer(static char *str, t_list store)
 {
 	int			i;

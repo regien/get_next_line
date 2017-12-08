@@ -31,5 +31,5 @@ char	*ft_strchr(const char *s, int c)
 
 int main(void)
 {
-	printf("pendejada = %i", ft_strchr("0123456798\n0123456789",'\n'));
+	printf("pendejada = %i\n", ft_strchr("0123456798\n0123456789",'\n'));
 }
