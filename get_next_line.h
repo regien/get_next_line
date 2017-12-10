@@ -6,7 +6,7 @@
 /*   By: gmalpart <gmalpart@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 00:48:17 by gmalpart          #+#    #+#             */
-/*   Updated: 2017/12/08 01:53:59 by gmalpart         ###   ########.fr       */
+/*   Updated: 2017/12/09 16:47:41 by gmalpart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 // if not -> 0 -- mostly in buf reset
 //
 // y last position
+
+// strjoin doesnt free memory i might have to change it (add 1 line)
 
 typedef	struct	s_store
 {

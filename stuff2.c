@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stuff.c                                            :+:      :+:    :+:   */
+/*   stuff2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gmalpart <gmalpart@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/26 00:51:55 by gmalpart          #+#    #+#             */
-/*   Updated: 2017/12/09 17:14:04 by gmalpart         ###   ########.fr       */
+/*   Created: 2017/12/09 17:08:14 by gmalpart          #+#    #+#             */
+/*   Updated: 2017/12/09 17:17:27 by gmalpart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,6 @@ int		ft_strchr_post(const char *s, int c)
 	return (i);
 }
 
-/*
-int				get_buffer(static char *str, t_list store)
-{
-	int			i;
-
-	i = 0;
-	while (str[i] != '\n')
-		i++;
-	return (1);
-}
-*/
-
-// en el momento de crear elemento, verifica que lo segundo que lee despues
-// que encuentre mas de una nueva linea,
 static char		*read_again_store(char *buf, t_list *storage, char **line)
 {
 	t_store *id;
@@ -69,24 +55,6 @@ static char		*read_again_store(char *buf, t_list *storage, char **line)
 	return (line);
 }
 
-t_list			*create_element(int ret, char *buf, t_list **storage)
-{
-	t_store		*container;
-	
-	container = ft_memalloc(sizeof(t_store));
-	// posiblemente esto siempre sea 0 asi que crare otra variable para probar
-	container->x = 0;
-	if (ft_strchr_post(buf, '\n') == -1)
-		container->y = (ft_strlen(buf) - 1);
-	else
-		container->y = ft_strchr_post(buf, '\n');
-	//variable a modificar - temporal de y;
-//	container->z = ;
-	container->z = container->y;
-	return(ft_lstnew(container, sizeof(t_store)));
-}
-
-
 int				get_next_line(const int fd, char **line)
 {
 	int						ret;
@@ -94,16 +62,18 @@ int				get_next_line(const int fd, char **line)
 	static t_list			*storage;
 	t_store					*id;
 
-	if (!line || fd <= 0)
+	if (!line || fd < 1)
 		return (0);
 	if (ft_strchr_post(*line, '\n') == -2)
 		*line = NULL;
-	if (!buf)
+	if (!(buf))
 		buf = ft_strnew(BUFF_SIZE);
+// si buff tiene algo adentro entonces lees de nuevo
+// entonces seria un if para leer o no
 	else
 	{
 		read_again_store(buf, storage, line);
-		return (1);
+//		return (1);
 	}
 	if ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 	{
@@ -123,6 +93,9 @@ int				get_next_line(const int fd, char **line)
 	ft_strncpy(*line, buf, id->y);
 	return (1);
 }
+
+
+/* ------------------------------------------------------- */
 
 int main(int argc, char **argv)
 {
