@@ -6,7 +6,7 @@
 /*   By: gmalpart <gmalpart@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 00:48:17 by gmalpart          #+#    #+#             */
-/*   Updated: 2017/12/11 15:27:19 by regien           ###   ########.fr       */
+/*   Updated: 2017/12/11 23:09:32 by gmalpart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,15 @@
 // y last position
 
 // strjoin doesnt free memory i might have to change it (add 1 line)
+
+// third try
+typedef	struct	s_fdstore
+{
+	int			fd;
+	char		*str;
+	int			end;
+}				t_fdstore;
+
 
 typedef	struct	s_store
 {
