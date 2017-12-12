@@ -6,7 +6,7 @@
 /*   By: gmalpart <gmalpart@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 00:48:17 by gmalpart          #+#    #+#             */
-/*   Updated: 2017/12/09 16:47:41 by gmalpart         ###   ########.fr       */
+/*   Updated: 2017/12/11 15:27:19 by regien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,15 @@ typedef	struct	s_store
 	int			z;
 	char		*str;
 }				t_store;
+
+
+// test only
+typedef	struct	s_file_buff
+{
+	int		fd;
+	char		*start;
+	char		*str;
+}		t_file_buff;
 
 int			get_next_line(const int fd, char **line);
 
