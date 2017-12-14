@@ -55,7 +55,7 @@ void	*ft_realloc(void *src, size_t srcsize, size_t dstsize)
 }
 
 /* --------------------------*/
-t_list				*create_node(int fd)
+t_list				*create_node(int fd, char *buf)
 {
 	t_fdstore		*iterdata;
 
@@ -63,11 +63,12 @@ t_list				*create_node(int fd)
 	iterdata->fd = fd;
 	if (!iterdata->str)
 		iterdata->str = ft_strnew(0);
+//	aun no tengo algo definido para end
 	return (ft_lstnew(iterdata, sizeof(t_fdstore)));
 }
 
 
-t_list			*resize_node(t_list **fdstore, int fd, char *buf)
+t_list			resize_node(t_list **fdstore, int fd, char *buf)
 {
 	t_list			*iter;
 	t_fdstore		*idata;
@@ -83,7 +84,7 @@ t_list			*resize_node(t_list **fdstore, int fd, char *buf)
 	temp = ft_strjoin(idata->str, buf);
 	free(idata->str);
 	idata->str = temp;
-	return (iter);
+	return ();
 }
 
 t_fdstore			*look_forit(t_list **fd_store, int fd)
@@ -111,11 +112,11 @@ int					doing_it(t_list **fdstore, char **line, int ret, int fd)
 	int				len;
 	t_fdstore		*idata;
 
-	idata = look_forit(fdstore, fd);
+	idata = look_forit(*fdstore, fd);
 	len = 0;
 	while(idata->str[len] && idata->str[len] != '\n')
 		len++;
-	if (idata->str[len] == '\n')
+	if (input[fd][len] == '\n')
 	{
 		*line = ft_strsub(idata->str, 0, len);
 		holder = ft_strdup(idata->str + (len + 1));
@@ -138,6 +139,7 @@ int					get_next_line(const int fd, char **line)
 	static t_list	*fdstore;
 	char			*buf;
 	int				ret;
+//	char			*temp;
 	t_fdstore		*idata;
 
 	if (fd < 0 || !line)
@@ -146,18 +148,19 @@ int					get_next_line(const int fd, char **line)
 	while ((ret = read(fd,buf, BUFF_SIZE)) > 0)
 	{
 		if (!(fdstore))
-			fdstore = create_node(fd);
+			fdstore = create_node(fd, buf);
 		else if ((idata = look_forit(&fdstore, fd)) == NULL)
-			ft_lstadd(&fdstore, create_node(fd));
+			ft_lstadd(fdstore, create_node(fd, buf));
 		idata = look_forit(&fdstore, fd);
-		resize_node(&fdstore, fd, buf);
 		buf[ret] = '\0';
 		if (ft_strchr(buf, '\n'))
 			break ;
+	// resize node
+	// temp = ft_strjoin(input[fd], buf);
 	}
 	if (ret < 0)
 		return (-1);
-	else if (!ret && (!(fdstore) || !(idata->str)))
+	else if (!ret && !(fdstore) || !(idata->str))
 		return (0);
 	return (doing_it(&fdstore, line, ret, fd));
 }

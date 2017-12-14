@@ -6,7 +6,7 @@
 #    By: gmalpart <gmalpart@estudent.42.us.org      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/09/25 16:22:47 by gmalpart          #+#    #+#              #
-#    Updated: 2017/10/21 22:02:39 by gmalpart         ###   ########.fr        #
+#    Updated: 2017/12/13 16:37:47 by gmalpart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ OBJECTS = $(FILES:.c=.o)
 all: $(NAME)
 
 $(NAME):
-	@$(CC) $(FLAGS) -c $(FILES)
+	@$(CC) $(FLAGS) -Iincludes -c $(FILES)
 	@ar rc $(NAME) $(OBJECTS)
 	@ranlib libft.a
 

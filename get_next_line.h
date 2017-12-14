@@ -6,7 +6,7 @@
 /*   By: gmalpart <gmalpart@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/26 00:48:17 by gmalpart          #+#    #+#             */
-/*   Updated: 2017/12/11 23:09:32 by gmalpart         ###   ########.fr       */
+/*   Updated: 2017/12/13 16:46:41 by gmalpart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef	struct	s_fdstore
 {
 	int			fd;
 	char		*str;
-	int			end;
 }				t_fdstore;
 
 
